@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2006, Google Inc.
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<!-- use empty string to specify no proxy or port -->
+<!-- This version must agree with that in apps/common/res/apns.xml -->
+
+<spnOverrides>
+	  <!-- Japan -->
+	  <spnOverride numeric="44020" spn="SoftBank" />
+	  <!-- Hong Kong -->
+	  <spnOverride numeric="45406" spn="SmarTone" />
+	  <spnOverride numeric="45412">
+		<spn locale="zh">中國移動香港</spn>
+		<spn locale="zh_CN">中国移动香港</spn>
+	  </spnOverride>
+	  <!-- China -->
+	  <spnOverride numeric="46000">
+		<spn locale="zh">中国移动</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46001">
+		<spn locale="zh">中国联通</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46002">
+		<spn locale="zh">中国移动</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46003">
+		<spn locale="zh">中国电信</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46007">
+		<spn locale="zh">中国移动</spn>
+	  </spnOverride>
+	  <!-- Taiwan -->
+	  <spnOverride numeric="46601">
+		<spn locale="zh">遠傳電信</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46688">
+		<spn locale="zh">和信電訊</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46689">
+		<spn locale="zh">威寶電信</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46692">
+		<spn locale="zh">中華電信</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46693">
+		<spn locale="zh">東信電訊</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46697">
+		<spn locale="zh">台灣大哥大</spn>
+	  </spnOverride>
+	  <spnOverride numeric="46699">
+		<spn locale="zh">泛亞電信</spn>
+	  </spnOverride>
+</spnOverrides>
