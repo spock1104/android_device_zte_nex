@@ -35,6 +35,7 @@
 /dev/kgsl-2d1             0666   root       root
 /dev/ion                  0664   system     system
 /dev/rtc0                 0600   system     system
+/dev/gss                  0660   gps        gps
 /dev/smd0                 0660   system     system
 /dev/smd4                 0660   system     system
 /dev/smd22                0660   system     system
@@ -80,10 +81,22 @@
 /dev/msm_vidc_enc         0660   system     audio
 /dev/msm_rotator          0664   system     system
 /dev/hw_random            0660   system     system
+/dev/akm8962_dev          0660   root       input
+/dev/mpu                  0660   system     system
+/dev/mpuirq               0660   system     system
+/dev/slaveirq             0660   system     system
+/dev/timerirq             0660   system     system
+/dev/radio0               0644   fm_radio   fm_radio
+/dev/msm_voicememo        0660   system     audio
 
 #permissions for audio
 /dev/msm_qcelp            0660   system     audio
 /dev/msm_evrc             0660   system     audio
+/dev/msm_acdb             0660   system     audio
+/dev/msm_fm               0660   system       audio
+/dev/msm_ac3              0660   system       audio
+/dev/msm_cad              0660   system       audio
+/dev/msm_rtac             0660   system       audio
 /dev/msm_wma              0660   system     audio
 /dev/msm_wmapro           0660   system     audio
 /dev/msm_amrnb            0660   system     audio
@@ -94,6 +107,9 @@
 /dev/msm_qcelp_in         0660   system     audio
 /dev/msm_evrc_in          0660   system     audio
 /dev/msm_amrnb_in         0640   system     audio
+/dev/msm_pcm_lp_dec       0660   system     audio
+/dev/msm_mvs              0660   system     audio
+/dev/qseecom              0660   system     drmrpc
 /dev/smd3                 0660   bluetooth  bluetooth
 /dev/smd2                 0660   bluetooth  bluetooth
 /dev/ttyHSL1              0660   system     system
@@ -103,6 +119,7 @@
 /dev/tty_sdio_00          0660   system     system
 /dev/ttyGS0               0660   system     system
 /dev/i2c-5                0660   media       media
+/dev/oncrpc/300000ba:00010000  0660   system     drmrpc
 
 # DVB devices
 /dev/dvb/adapter0/demux*  0444   media       media
@@ -110,7 +127,14 @@
 /dev/dvb/adapter0/video*  0664   media       media
 
 # sensors
+/sys/devices/virtual/input/input*	name	0660  root   input 
+/sys/devices/virtual/input/input*	max		0660  root   input 
+/sys/devices/virtual/input/input*	min		0660  root   input 
+/sys/devices/virtual/input/input*	poll	0660  root   input
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
 /sys/devices/i2c-12/12-* enable 0664 system system
+/sys/devices/i2c-12/12-* delay 0664 system system
+/sys/devices/i2c-12/12-* poll 0664 system system
 /sys/devices/i2c-12/12-* poll_delay 0664 system system
 /dev/taos		  0666	 root	     root
+/dev/msm_dsps             0660  system       system

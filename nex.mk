@@ -18,55 +18,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0 \
 	ro.allow.mock.location=0 \
 	ro.adb.secure=0 \
-	ro.debuggable=1 \
-	persist.sys.usb.config=mass_storage
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    persist.radio.add_power_save=1 \
-    persist.radio.dont_use_dsd=true \
-    persist.radio.apm_sim_not_pwdn=1 \
-    ro.ril.transmitpower=true \
-    ro.warmboot.capability=1 \
-    ro.qualcomm.cabl=0 \
-    ro.opengles.version=196608 \
-    af.resampler.quality=4 \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.vr.enable=false \
-    persist.audio.handset.mic=digital \
-    ro.use_data_netmgrd=true \
-    lpa.decode=true \
-    lpa.use-stagefright=true \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so \
-    persist.rild.nitz_plmn="" \
-    persist.rild.nitz_long_ons_0="" \
-    persist.rild.nitz_long_ons_1="" \
-    persist.rild.nitz_long_ons_2="" \
-    persist.rild.nitz_long_ons_3="" \
-    persist.rild.nitz_short_ons_0="" \
-    persist.rild.nitz_short_ons_1="" \
-    persist.rild.nitz_short_ons_2="" \
-    persist.rild.nitz_short_ons_3="" \
-    ril.subscription.types=NV,RUIM \
-    persist.gps.qmienabled=true \
-    persist.gps.qc_nlp_in_use=0 \
-    persist.fuse_sdcard=true \
-    ro.vold.umsdirtyratio=50 \
-    ro.cwm.enable_key_repeat=true \
-    persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0 \
-    mm.enable.smoothstreaming=true \
-    persist.timed.enable=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=1 \
-    debug.egl.hw=1 \
-    persist.hwc.mdpcomp.enable=true \
-    debug.mdpcomp.logs=0 \
-    ro.telephony.ril_class=QualcommSharedRIL \
-    ro.telephony.call_ring.multiple=0
+	ro.debuggable=1
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -78,22 +30,13 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
 
-LOCAL_PATH := device/zte/nex
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/zte/nex/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
 # Camera
-PRODUCT_PACKAGES := \
-	libgenlock \
-	libmmcamera_interface \
-#	camera-wrapper.msm8960
+PRODUCT_PACKAGES += \
+    camera.msm8960
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8960
 
 # Light
 PRODUCT_PACKAGES += \
