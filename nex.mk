@@ -38,6 +38,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8960
 
+# GPS configuration
+PRODUCT_COPY_FILES += \
+    device/zte/nex/gps/gps.conf:system/etc/gps.conf
+
 # Light
 PRODUCT_PACKAGES += \
     lights.msm8960
@@ -177,10 +181,10 @@ $(call inherit-product, build/target/product/full.mk)
 
 $(call inherit-product-if-exists, vendor/zte/nex/nex-vendor.mk)
 
-$(call inherit-product, frameworks/native/build/phone-hdpi-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 PRODUCT_NAME := full_nex
 PRODUCT_DEVICE := nex
 PRODUCT_MANUFACTURER := ZTE
-PRODUCT_MODEL := ZTE Nex
+PRODUCT_MODEL := Nex

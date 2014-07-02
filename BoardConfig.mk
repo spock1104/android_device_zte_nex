@@ -2,10 +2,11 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-USE_CAMERA_STUB := false
 
 # inherit from the proprietary version
 -include vendor/zte/nex/BoardConfigVendor.mk
+
+BOARD_VENDOR := ZTE
 
 ARCH_ARM_HAVE_NEON := true
 TARGET_NO_BOOTLOADER := true
@@ -68,13 +69,12 @@ BOARD_CHARGER_RES := device/zte/nex/charger
 TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
-BOARD_USES_SEPERATED_AUDIO_INPUT := true
-BOARD_USES_FLUENCE_INCALL := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB -DDISABLE_HW_ID_MATCH_CHECK -DNEEDS_VECTORIMPL_SYMBOLS -DQCOM_BSP_CAMERA_ABI_HACK 
 USE_DEVICE_SPECIFIC_CAMERA := true
+BOARD_NEEDS_MEMORYHEAPPMEM := true
 
 # Recovery
 TARGET_RECOVERY_NO_MSM_BSP := true
@@ -109,7 +109,7 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_COMPRESSED_AUDIO_ENABLED -DOLD_ION_API -DQCOM_BSP 
 
 # Graphics
-BOARD_EGL_CFG := device/zte/nex/prebuilt/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/zte/nex/prebuilt/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_USES_GENLOCK := true
 TARGET_USES_ION := true
@@ -119,7 +119,6 @@ TARGET_USES_OVERLAY := true
 TARGET_USES_SF_BYPASS := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true

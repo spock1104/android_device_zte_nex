@@ -1,6 +1,6 @@
 
 # Audio
-etc/audio_policy.conf
+#etc/audio_policy.conf
 etc/init.qcom.audio.sh
 etc/snd_soc_msm/snd_soc_msm
 etc/snd_soc_msm/snd_soc_msm_2x
@@ -19,12 +19,13 @@ lib/libcsd-client.so
 
 # Media
 bin/drmdiagapp
-etc/media_codecs.xml
-etc/media_profiles.xml
+#etc/media_codecs.xml
+#etc/media_profiles.xml
 lib/libDivxDrm.so
 lib/libSHIMDivxDrm.so
 lib/libmmparser.so
 lib/libmmosal.so
+lib/libmm-color-convertor.so
 bin/qseecomd
 lib/libdrmfs.so
 lib/libdrmtime.so
@@ -37,21 +38,26 @@ etc/firmware/vidc.mdt
 etc/firmware/vidc_1080p.fw
 etc/firmware/vidcfw.elf
 
+#DRM
+lib/libdrmfs.so
+lib/libdrmtime.so
+lib/drm/libfwdlockengine.so
+
 # Camera
-app/GestureOverlayService.apk
-framework/GestureSDK.jar
-bin/mm-gs-camctrl-test
-bin/mm-jpeg-dec-test
-bin/mm-jpeg-dec-test-client
-bin/mm-jpeg-enc-test
-bin/mm-jpeg-enc-test-client
-bin/mm-jps-enc-test
-bin/mm-mpo-dec-test
-bin/mm-mpo-enc-test
+#app/GestureOverlayService.apk
+#framework/GestureSDK.jar
+#bin/mm-gs-camctrl-test
+#bin/mm-jpeg-dec-test
+#bin/mm-jpeg-dec-test-client
+#bin/mm-jpeg-enc-test
+#bin/mm-jpeg-enc-test-client
+#bin/mm-jps-enc-test
+#bin/mm-mpo-dec-test
+#bin/mm-mpo-enc-test
 bin/mm-qcamera-app
 bin/mm-qcamera-daemon
-bin/mm-qcamera-test
-bin/mm-qcamera-testsuite-client
+#bin/mm-qcamera-test
+#bin/mm-qcamera-testsuite-client
 bin/v4l2-qcamera-app
 lib/libchromatix_ar0542_default_video.so
 lib/libchromatix_ar0542_preview.so
@@ -127,9 +133,9 @@ lib/libchromatix_s5k4e1_preview.so
 lib/libchromatix_vx6953_default_video.so
 lib/libchromatix_vx6953_preview.so
 lib/libgemini.so
-lib/libgesture_client.so
-lib/libgesture-core.so
-lib/libgestureservice.so
+#lib/libgesture_client.so
+#lib/libgesture-core.so
+#lib/libgestureservice.so
 lib/libimage-jpeg-dec-omx-comp.so
 lib/libimage-jpeg-enc-omx-comp.so
 lib/libimage-omx-common.so
@@ -143,29 +149,79 @@ lib/libmmcamera_interface2.so
 lib/libmmcamera_plugin.so
 lib/libmmcamera_statsproc31.so
 lib/libmmcamera_wavelet_lib.so
-lib/libmmgesture_services.so
-lib/libmmgestures-linux.so
+#lib/libmmgesture_services.so
+#lib/libmmgestures-linux.so
 lib/libmmjpeg.so
 lib/libmmjpeg_interface.so
 lib/libmmmpod.so
 lib/libmmstillomx.so
 lib/liboemcamera.so
-lib/hw/gestures.msm8960.so
-lib/hw/camera.msm8960.so
+#lib/hw/gestures.msm8960.so
+lib/hw/vendor-camera.msm8960.so
+# Don't ask me how this was missed in the first place!!!!
+lib/libmmcamera_ar0542.so
+lib/libmmcamera_hi542.so
+lib/libmmcamera_ov8825.so
+lib/libmmcamera_ov8835.so
 
-# Wifi
+# scripts
+etc/init.qcom.wifi.sh
+etc/init.ath3k.bt.sh
+etc/init.qcom.bt.sh
+etc/init.qcom.coex.sh
+etc/init.qcom.efs.sync.sh
+etc/init.qcom.fm.sh
+etc/init.qcom.mdm_links.sh
+etc/init.qcom.post_boot.sh
+etc/init.qcom.post_fs.sh
+etc/init.qcom.sdio.sh
+etc/init.qcom.thermald_conf.sh
+etc/usf_post_boot.sh
+
+# RIL/RADIO
+lib/libdiag.so
+lib/libdsi_netctrl.so
+lib/libdsutils.so
+lib/libidl.so
+lib/libnetmgr.so
+lib/libqcci_legacy.so
+lib/libqdi.so
+lib/libqdp.so
+lib/libqmi.so
+lib/libqmi_cci.so
+lib/libqmi_client_qmux.so
+lib/libqmi_common_so.so
+lib/libqmi_csi.so
+lib/libqmi_csvt_srvc.so
+lib/libqmi_encdec.so
+lib/libqmiservices.so
+lib/libreference-ril.so
+lib/libril.so
+lib/libril-qc-qmi-1.so
+lib/libril-qcril-hook-oem.so
+bin/ds_fmc_appd
+bin/mdm_helper
+bin/netmgrd
+bin/qmuxd
+bin/rild
+bin/rmt_storage
+
+
+#WiFi
+etc/firmware/wlan/prima/WCNSS_cfg.dat
+etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 # Bluetooth
+bin/hci_qcomm_init
 bin/bt_ssp_debug_mode.sh
 bin/bt_testmode.sh
 bin/bt_testmode_new.sh
 bin/btnvtool
 
 # GPS
-bin/location-mq
-bin/wiperiface_v02
-lib/libloc_api_v02.so
 lib/libgeofence.so
+lib/libloc_api_v02.so
 
 # FM
 etc/init.qcom.fm.sh
@@ -174,7 +230,6 @@ bin/fm_qsoc_patches
 # Time services
 bin/time_daemon
 lib/libtime_genoff.so
-lib/libtime_genoff.so
 
 # Sensors
 
@@ -182,19 +237,50 @@ bin/akmd8962_new
 bin/sensors.qcom
 bin/proximity.init
 bin/geomagneticd
+lib/libsensor1.so
 lib/hw/sensors.msm8960.so
 
 # Perf
 lib/libqc-opt.so
 
 # Thermal
-bin/hci_qcomm_init
 bin/mpdecision
 bin/thermald
 etc/thermald-8930.conf
-etc/thermald-8064.conf
-etc/thermald-8960.conf
-etc/thermald-8960ab.conf
+#etc/thermald-8064.conf
+#etc/thermald-8960.conf
+#etc/thermald-8960ab.conf
+
+# GPU/Adreno
+lib/libc2d2_a3xx.so
+lib/libc2d2_z180.so
+lib/libC2D2.so
+lib/libgsl.so
+lib/libllvm-a3xx.so
+lib/libllvm-arm.so
+lib/libOpenCL.so
+lib/libOpenVG.so
+lib/libsc-a2xx.so
+lib/libsc-a3xx.so
+lib/egl/egl.cfg
+lib/egl/eglsubAndroid.so
+lib/egl/libEGL_adreno200.so
+lib/egl/libGLESv1_CM_adreno200.so
+lib/egl/libGLESv2_adreno200.so
+lib/egl/libplayback_adreno200.so
+lib/egl/libq3dtools_adreno200.so
+
+
+# Firmware
+etc/firmware/a225p5_pm4.fw
+etc/firmware/a225_pfp.fw
+etc/firmware/a225_pm4.fw
+etc/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw
+etc/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw
+etc/firmware/yamato_pfp.fw
+etc/firmware/yamato_pm4.fw
 
 # Other
 bin/bridgemgrd
@@ -202,13 +288,13 @@ bin/cnd
 bin/mm-pp-daemon
 bin/port-bridge
 bin/qcks
-bin/qosmgr
-bin/quipc_igsn
-bin/quipc_main
+#bin/qosmgr
+#bin/quipc_igsn
+#bin/quipc_main
 bin/sapd
 bin/usbhub_init
-bin/usf_epos
-bin/usf_tester
-bin/ztecfg
+#bin/usf_epos
+#bin/usf_tester
+#bin/ztecfg
 bin/zte_charger
-bin/ztediag
+#bin/ztediag

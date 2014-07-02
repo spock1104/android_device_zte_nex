@@ -182,15 +182,17 @@ service time_daemon /system/bin/time_daemon
    class late_start
    user root
    group root
+
 #ZTE_WANGZY_PROXIMITY_101014
 service proximity_init /system/bin/proximity.init -r
-    user system
+    user root
     group system radio
     disabled
     oneshot
     
 on property:dev.bootcomplete=1
     start proximity_init
+    chmod 0666  /data/misc/prox/prox_threshold.txt
 #ZTE_WANGZY_PROXIMITY_101014 
 
 #ZTE_AKMD_FYA 20111020 -------------
