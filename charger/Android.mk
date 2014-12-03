@@ -40,9 +40,9 @@ endif
 
 include $(BUILD_EXECUTABLE)
 
-define _add-charger-image
+define _add-zte-charger-image
 include $$(CLEAR_VARS)
-LOCAL_MODULE := system_core_charger_$(notdir $(1))
+LOCAL_MODULE := device_zte_nex_charger_$(notdir $(1))
 LOCAL_MODULE_STEM := $(notdir $(1))
 _img_modules += $$(LOCAL_MODULE)
 LOCAL_SRC_FILES := $1
@@ -54,16 +54,11 @@ endef
 
 _img_modules :=
 _images :=
-ifneq ($(BOARD_CHARGER_RES),)
-$(foreach _img, $(call find-subdir-subdir-files, ../../../$(BOARD_CHARGER_RES), "*.png"), \
-  $(eval $(call _add-charger-image,$(_img))))
-else
-$(foreach _img, $(call find-subdir-subdir-files, "images", "*.png"), \
-  $(eval $(call _add-charger-image,$(_img))))
-endif
+$(foreach _img, $(call find-subdir-subdir-files, "*.png"), \
+  $(eval $(call _add-zte-charger-image,$(_img))))
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := charger_res_images
+LOCAL_MODULE := charger_res_images_zte
 LOCAL_MODULE_TAGS := optional
 LOCAL_REQUIRED_MODULES := $(_img_modules)
 include $(BUILD_PHONY_PACKAGE)
