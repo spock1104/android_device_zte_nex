@@ -159,6 +159,12 @@ BOARD_USES_EXTRA_THERMAL_SENSOR := true
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+BOARD_SEPOLICY_DIRS += \
+    device/zte/nex/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    ueventd.te
+
 #TWRP
 #RECOVERY_VARIANT := twrp
 DEVICE_RESOLUTION := 480x800
