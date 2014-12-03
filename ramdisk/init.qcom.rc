@@ -743,7 +743,7 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
     disabled
     oneshot
 
-service charger /charger
+service charger /zte_charger
     class charger
 
 	#lianghouxing add qcom-post-ftm for LOW POWER

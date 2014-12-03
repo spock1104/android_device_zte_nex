@@ -41,10 +41,10 @@ TARGET_BOOTLOADER_BOARD_NAME := nex
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Kernel
-TARGET_KERNEL_SOURCE         := 
+TARGET_KERNEL_SOURCE         := kernel/android_kernel_zte_nex
 TARGET_KERNEL_CONFIG         := nex_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
-BOARD_KERNEL_CMDLINE := := androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31 zcache
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.selinux=enforcing user_debug=31 zcache
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -63,12 +63,15 @@ TARGET_OTA_ASSERT_DEVICE := nex,n800
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # chargers
-BOARD_CHARGER_RES := device/zte/nex/charger
+BOARD_CHARGER_RES := device/zte/nex/charger/res
 
 # Audio
 TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
+BOARD_USES_FLUENCE_INCALL := true
+BOARD_USES_FLUENCE_FOR_VOIP := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 
 # Camera
@@ -79,6 +82,7 @@ BOARD_NEEDS_MEMORYHEAPPMEM := true
 # Recovery
 TARGET_RECOVERY_NO_MSM_BSP := true
 BOARD_KERNEL_RECOVERY_CMDLINE      := $(BOARD_KERNEL_CMDLINE)
+TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/nex/recovery/zImage
 TARGET_RECOVERY_FSTAB := device/zte/nex/ramdisk/fstab.qcom
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
@@ -92,6 +96,9 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+
+# External apps on SD
+TARGET_EXTERNAL_APPS = sdcard1
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -153,7 +160,7 @@ BOARD_USES_EXTRA_THERMAL_SENSOR := true
 BOARD_USES_QC_TIME_SERVICES := true
 
 #TWRP
-
+#RECOVERY_VARIANT := twrp
 DEVICE_RESOLUTION := 480x800
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_INTERNAL_STORAGE_PATH := "/data/media"
@@ -168,3 +175,4 @@ TW_NO_REBOOT_BOOTLOADER := false
 TW_FLASH_FROM_STORAGE := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
+TW_INPUT_BLACKLIST := lis3dh_acc

@@ -1,0 +1,4 @@
+#!/system/bin/sh
+# hotspot
+
+busybox cp system/etc/wifi/hostapd.conf data/misc/wifi/

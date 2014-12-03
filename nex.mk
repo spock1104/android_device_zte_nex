@@ -9,10 +9,6 @@ PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += hdpi
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 800
-TARGET_SCREEN_WIDTH := 480
-
 # adb + root
 ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0 \
@@ -25,10 +21,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
-
-# QC Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -45,10 +37,6 @@ PRODUCT_COPY_FILES += \
 # Light
 PRODUCT_PACKAGES += \
     lights.msm8960
-
-# Increase the HWUI font cache since we have tons of RAM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.text_cache_width=2048
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -82,7 +70,7 @@ PRODUCT_PACKAGES += \
 	DeviceSettings
 
 # Charger
-PRODUCT_PACKAGES += charger
+PRODUCT_PACKAGES += zte_charger
 
 # STK
 PRODUCT_PACKAGES += Stk
@@ -144,13 +132,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/zte/nex/recovery/recovery.fstab:recovery/root/etc/twrp.fstab \
 
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/zte/nex/recovery/root,recovery/root)
+
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/zte/nex/prebuilt/system,system)
-
-# APN
-PRODUCT_COPY_FILES += \
-	device/zte/nex/prebuilt/system/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -179,12 +166,12 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 $(call inherit-product, build/target/product/full.mk)
 
+$(call inherit-product, build/target/product/full_base_telephony.mk)
+
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
 $(call inherit-product-if-exists, vendor/zte/nex/nex-vendor.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
-PRODUCT_NAME := full_nex
-PRODUCT_DEVICE := nex
-PRODUCT_MANUFACTURER := ZTE
-PRODUCT_MODEL := Nex
