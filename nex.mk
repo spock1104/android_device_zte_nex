@@ -70,7 +70,9 @@ PRODUCT_PACKAGES += \
 	DeviceSettings
 
 # Charger
-PRODUCT_PACKAGES += zte_charger
+PRODUCT_PACKAGES += \
+        zte_charger \
+        charger_res_images_zte \
 
 # STK
 PRODUCT_PACKAGES += Stk
