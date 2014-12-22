@@ -80,6 +80,10 @@ on boot
    write /sys/devices/i2c-3/3-005b/update_fw 1
    start qcamerasvr
 
+# Getting tired of the unknown baseband issue
+   setprop gsm.version.baseband N800B01-8960A-BAAAANAZA-40000000
+   
+
 on post-fs-data
    mkdir /data/tombstones 0771 system system
    mkdir /tombstones/modem 0771 system system
