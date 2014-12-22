@@ -37,16 +37,8 @@ on init
     mkdir /storage/sdcard1 0775 system system
     mkdir /storage/usbdisk 0775 system system
 
-    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
-    export LD_LIBRARY_PATH /vendor/lib:/system/lib
-    export ANDROID_BOOTLOGO 1
-    export ANDROID_ROOT /system
-    export ANDROID_ASSETS /system/app
-    export ANDROID_DATA /data
-    export ASEC_MOUNTPOINT /mnt/asec
-    export LOOP_MOUNTPOINT /mnt/obb
     export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
 
