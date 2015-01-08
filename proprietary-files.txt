@@ -220,6 +220,7 @@ bin/bt_testmode_new.sh
 bin/btnvtool
 
 # GPS
+bin/gpsone_daemon
 lib/libgeofence.so
 lib/libloc_api_v02.so
 
