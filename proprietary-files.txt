@@ -1,6 +1,6 @@
 
 # Audio
-#etc/audio_policy.conf
+etc/audio_policy.conf
 etc/init.qcom.audio.sh
 etc/snd_soc_msm/snd_soc_msm
 etc/snd_soc_msm/snd_soc_msm_2x
@@ -19,8 +19,8 @@ lib/libcsd-client.so
 
 # Media
 bin/drmdiagapp
-#etc/media_codecs.xml
-#etc/media_profiles.xml
+etc/media_codecs.xml
+etc/media_profiles.xml
 lib/libDivxDrm.so
 lib/libSHIMDivxDrm.so
 lib/libmmparser.so
@@ -157,7 +157,7 @@ lib/libmmmpod.so
 lib/libmmstillomx.so
 lib/liboemcamera.so
 #lib/hw/gestures.msm8960.so
-lib/hw/vendor-camera.msm8960.so
+lib/hw/vendor.camera.msm8960.so
 # Don't ask me how this was missed in the first place!!!!
 lib/libmmcamera_ar0542.so
 lib/libmmcamera_hi542.so
