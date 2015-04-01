@@ -26,13 +26,14 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     camera.msm8960
 
-# GPS
+#WiFi
 PRODUCT_PACKAGES += \
-    gps.msm8960
-
-# GPS configuration
-PRODUCT_COPY_FILES += \
-    device/zte/nex/gps/gps.conf:system/etc/gps.conf
+    hostapd \
+    hostapd_default.conf \
+    dhcpcd.conf \
+    libwpa_client \
+    wpa_supplicant \
+    wcnss_service
 
 # Light
 PRODUCT_PACKAGES += \
@@ -140,6 +141,13 @@ PRODUCT_COPY_FILES += \
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/zte/nex/prebuilt/system,system)
+
+# Media Profile
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
 
 # Permissions
 PRODUCT_COPY_FILES += \
