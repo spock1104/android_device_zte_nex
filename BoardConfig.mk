@@ -5,7 +5,6 @@
 
 # inherit from the proprietary version
 -include vendor/zte/nex/BoardConfigVendor.mk
--include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_VENDOR := ZTE
 
@@ -28,7 +27,6 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 
 # Krait optimizations
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
 TARGET_USE_KRAIT_PLD_SET := true
 TARGET_KRAIT_BIONIC_PLDOFFS := 10
@@ -40,16 +38,13 @@ TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_BOOTLOADER_BOARD_NAME := nex
-
-# We need to enable Non-PIE executables support for now
-# See http://review.cyanogenmod.org/#/c/79136/
-TARGET_NEEDS_NON_PIE_SUPPORT := true
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Kernel
 TARGET_KERNEL_SOURCE         := kernel/android_kernel_zte_nex
 TARGET_KERNEL_CONFIG         := nex_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31 zcache
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.selinux=enforcing user_debug=31 zcache
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -60,9 +55,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1082130432
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 2122317824
 BOARD_CACHEIMAGE_PARTITION_SIZE := 318767104
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
-TARGET_USERIMAGES_USE_EXT4 := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := nex,n800
@@ -73,6 +66,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CHARGER_RES := device/zte/nex/charger/res
 
 # Audio
+TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 BOARD_USES_FLUENCE_INCALL := true
@@ -108,17 +102,18 @@ TARGET_EXTERNAL_APPS = sdcard1
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
-BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zte/nex/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/zte/nex/bluetooth/vnd_nex.txt
 
 # QCOM
 TARGET_USES_QCOM_BSP := true
 BOARD_USES_QCOM_HARDWARE := true
+TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_DISPLAY_INSECURE_MM_HEAP := true
 TARGET_NO_ADAPTIVE_PLAYBACK := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_COMPRESSED_AUDIO_ENABLED -DQCOM_BSP -DQCOM_LEGACY_UIDS -DOLD_ION_API
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_COMPRESSED_AUDIO_ENABLED -DOLD_ION_API -DQCOM_BSP 
 
 # Graphics
 BOARD_EGL_CFG := device/zte/nex/prebuilt/egl.cfg
@@ -141,13 +136,9 @@ TARGET_PROVIDES_LIBLIGHT := true
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
 
-# RIL
-BOARD_RIL_CLASS := ../../../device/zte/nex/ril
-
 # Wifi
 BOARD_HAS_QCOM_WLAN_SDK 	:= true
 BOARD_HAS_QCOM_WLAN 		:= true
-TARGET_USES_WCNSS_CTRL          := true
 BOARD_WLAN_DEVICE 		:= qcwcn
 BOARD_HOSTAPD_DRIVER 		:= NL80211
 BOARD_HOSTAPD_PRIVATE_LIB 	:= lib_driver_cmd_$(BOARD_WLAN_DEVICE)
@@ -168,22 +159,11 @@ BOARD_USES_EXTRA_THERMAL_SENSOR := true
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
-# Enable Minikin text layout engine (will be the default soon)
-USE_MINIKIN := true
+BOARD_SEPOLICY_DIRS += \
+    device/zte/nex/sepolicy
 
-# Include an expanded selection of fonts
-EXTENDED_FONT_FOOTPRINT := true
-
-BOARD_USES_LEGACY_MMAP := true
-
-# Logging
-TARGET_USES_LOGD := false
-
-#BOARD_SEPOLICY_DIRS += \
-#    device/zte/nex/sepolicy
-
-#BOARD_SEPOLICY_UNION += \
-#    ueventd.te
+BOARD_SEPOLICY_UNION += \
+    ueventd.te
 
 #TWRP
 #RECOVERY_VARIANT := twrp

@@ -223,9 +223,6 @@ bin/btnvtool
 bin/gpsone_daemon
 lib/libgeofence.so
 lib/libloc_api_v02.so
-lib/libgps.utils.so
-lib/libloc_adapter.so
-lib/libloc_eng.so
 
 # FM
 etc/init.qcom.fm.sh

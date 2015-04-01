@@ -108,6 +108,10 @@ persist.gps.qmienabled=true
 # System property for cabl
 ro.qualcomm.cabl=0
 
+# System props for telephony
+# System prop to turn on CdmaLTEPhone always
+# removed by yangyiming 2013.01.17
+# telephony.lteOnCdmaDevice=1
 #
 # System prop for sending transmit power request to RIL during WiFi hotspot on/off
 #
@@ -135,9 +139,6 @@ ro.qc.sdk.camera.facialproc=false
 ro.qc.sdk.gestures.camera=false
 #property to force camera shutter sound on speaker
 ro.camera.sound.forced=0
-
-camera2.portability.force_api=1
-
 #
 #ZTE_LCF_20130121 property to turned off Qualcomm ��TCP Pre-Connect Feature��
 #
@@ -147,13 +148,13 @@ persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
 
-ro.cdma.home.operator.alpha=Virgin Mobile US
+ro.cdma.home.operator.alpha=Virgin Mobile
 ro.cdma.home.operator.subscriber=31000
 ro.cdma.home.operator.numeric=311490
-gsm.sim.operator.alpha=Virgin Mobile US
+gsm.sim.operator.alpha=Virgin Mobile
 gsm.sim.operator.numeric=311490
 gsm.sim.operator.iso-country=us
-gsm.operator.alpha=Virgin Mobile US
+gsm.operator.alpha=Virgin Mobile
 gsm.operator.numeric=311490
 gsm.operator.iso-country=us
 ro.com.google.clientidbase=android-zte
