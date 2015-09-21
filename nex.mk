@@ -2,6 +2,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 $(call inherit-product-if-exists, vendor/zte/nex/nex-vendor.mk)
 
+$(call inherit-product, device/zte/nex/device.mk)
+
 DEVICE_PACKAGE_OVERLAYS += device/zte/nex/overlay
 
 # This device is hdpi.
@@ -28,11 +30,14 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
+    libloc_adapter \
+    libloc_eng \
+    libgps.utils \
     gps.msm8960
 
 # GPS configuration
-PRODUCT_COPY_FILES += \
-    device/zte/nex/gps/gps.conf:system/etc/gps.conf
+#PRODUCT_COPY_FILES += \
+#    device/zte/nex/gps/gps.conf:system/etc/gps.conf
 
 # Light
 PRODUCT_PACKAGES += \
@@ -161,7 +166,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:/system/etc/permissions/android.hardware.compass.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:/system/etc/permissions/android.hardware.telephony.cdma.xml \
-
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
